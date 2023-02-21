@@ -1,14 +1,15 @@
-web:
-    image: tiangolo/nginx-rtmp
-    ports:
-        - "8080:8080"
-        - "1935:1935"
-    volumes:
-        - ./nginx.conf:/etc/nginx/nginx.conf
-        - ./html/:/usr/local/nginx/html/
-    links:
-        - php
-php:
-    image: php:8.0.3-fpm-5.1.20-apcu
-    volumes:
-        - ./html/:/usr/local/nginx/html/
+services:
+    web:
+        image: tiangolo/nginx-rtmp
+        ports:
+            - "8080:8080"
+            - "1935:1935"
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf
+            - ./html/:/usr/local/nginx/html/
+        links:
+            - php
+    php:
+        image: php:8.0.3-fpm-5.1.20-apcu
+        volumes:
+            - ./html/:/usr/local/nginx/html/
